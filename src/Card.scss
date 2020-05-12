@@ -1,0 +1,117 @@
+@import './scss/vars.scss';
+
+img {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+p, h2 {
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 0px 8px 0px $primary-dark;
+
+  .details {
+    background: #ececec;
+    padding: 0 20px;
+  }
+
+  .image {
+    padding: 20px 10px 30px;
+    background-image: linear-gradient(to right, rgba(#313131, 1), rgba(#313131, 1)), url('/wood-bg.jpg');
+    background-size: cover, cover;
+    background-blend-mode: multiply;
+    background-position: center, center;
+    border-bottom: solid 3px $primary-color;
+    
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 70%;
+    }
+  }
+
+  .name {
+    padding: 20px 0;
+
+    h6 {
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+      opacity: 0.5;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 1;
+      word-break: break-word;
+      hyphens: auto;
+    }
+  }
+
+  .text {
+    padding: 20px 0;
+    border-top: solid 2px $primary-color;
+    font-size: 0.95rem;
+  }
+
+  .meta {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0;
+    line-height: 18px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    justify-content: center;
+    display: flex;
+    background: $primary-color;
+    padding: 7px 5px 5px;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto -16px;
+    top: -16px;
+
+    &::before,
+    &::after {
+      box-sizing: border-box;
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: $primary-color;
+      border-right: none;
+      position: absolute;
+      top: 4px;
+      border-top: none;
+      left: -10px;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(225deg);
+      left: auto;
+      right: -10px;
+    }
+
+    svg {
+      margin: -2px 2px 0 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    span {
+      color: #ececec;
+      align-items: center;
+      line-height: 16px;
+      position: relative;
+      z-index: 12; 
+    }
+  }
+}

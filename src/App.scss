@@ -1,0 +1,39 @@
+@import './scss/vars.scss';
+
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-family: 'DM Serif Display', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+
+  &.border-bottom {
+    border-bottom: solid 2px $primary-dark;
+    padding: 10px 0 12px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 2.7rem;
+  }
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+a.home {
+  text-decoration: none;
+  text-transform: uppercase;
+}

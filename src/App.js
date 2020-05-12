@@ -1,54 +1,58 @@
-import React, { 
-  useState, 
-  useEffect,
-} from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
-import './App.css';
+import { GoHome } from 'react-icons/go'
 
-import Card from './Card';
+import './App.scss';
 import Search from './Search';
+import CardList from './CardList';
+
 
 function App() {
-  const pageSize = 20
-  const [ page, setPage ] = useState(1);
-  const [ cards, setCards ] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
 
-
-  const updateCardList = () => {
-    (async function loadCards() {
-      const result = await axios(
-        `https://api.elderscrollslegends.io/v1/cards?pageSize=${pageSize}&page=${page}`,
-      );
-      setPage(page + 1);
-      setCards(cards => [...cards, ...result.data.cards])
-    })();
+  /**
+   * 
+   * @param {*} e the event being passed
+   * All three of the follwing functions operate in a similar way, subbing in for react-router
+   * in a passable view management set up. Any more complex, and a router would be smart.
+   */
+  const handleShowAll = (e) => {
+    e.preventDefault();
+    setShowAll(true);
+    setShowSearch(false);
+    setShowWelcome(false);
   }
 
-  const handleScroll = () => {
-    const el = document.documentElement;
-    if (window.innerHeight + el.scrollTop !== el.offsetHeight) return;
-    updateCardList();
+  const handleShowSearch = (e) => {
+    e.preventDefault();
+    setShowAll(false);
+    setShowSearch(true);
+    setShowWelcome(false);
   }
 
-  useEffect(() => {
-    updateCardList(page);
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  })
+  const handleShowHome = (e) => {
+    e.preventDefault();
+    setShowAll(false);
+    setShowSearch(false);
+    setShowWelcome(true);
+  }
 
   return (
     <div>
-      <h1>This is my highspot coding exercise.</h1>
-
-      <ul className="cards">
-        {cards.map( card => (
-          <li key={card.id}><Card data={card} /></li>
-        ))}
-      </ul>
+      <div className="container">
+        {showWelcome && 
+          <h1>Welcome to <em>Vern’s Highspot coding exericse</em>. <br /><br />Perhaps you’re looking 
+            to <a href="#" onClick={e => handleShowAll(e)}>browse all the Elder Scrolls: Legends cards</a>. Maybe you’d rather <a href="#" onClick={e => handleShowSearch(e)}>search for a specific card</a>. <br /><br />Either way, happy browsing.
+          </h1>
+        }
+        {!showWelcome && <a className="home" href="#" onClick={e => handleShowHome(e)} ><GoHome /> Home</a>}
+        {showAll && <CardList />}
+        {showSearch && <Search />}
+      </div>
+      
+      
     </div>
   )
 

@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
+import { Helmet } from "react-helmet";
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    <Helmet>
+      <title>Highspot Coding Exercise</title>
+    </Helmet>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
