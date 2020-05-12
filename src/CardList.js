@@ -19,6 +19,10 @@ function CardList() {
   const updateCardList = () => {
     setIsLoading(true);
 
+    /**
+     * load the cards asynchronously, increment page number state,
+     * add new cards to existing array, and handle loading state
+     */
     (async function loadCards() {
       try {
         const result = await axios.get(
@@ -28,18 +32,21 @@ function CardList() {
         setCards(cards => [...cards, ...result.data.cards])
         setIsLoading(false);
       } catch (error) {
-        alert('error');
         console.error(error)
       }
     })();
   }
-
+  
+  /**
+   * Update the card list once the user has reached the end of the page.
+   */
   const handleScroll = () => {
     const el = document.documentElement;
     if (window.innerHeight + el.scrollTop !== el.offsetHeight) return;
     updateCardList();
   }
 
+  // run this on intial page load.
   useEffect(() => {
     updateCardList(page);
   }, []);

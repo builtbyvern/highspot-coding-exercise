@@ -73,7 +73,7 @@ function Search(props) {
           <li key={card.id} className="card-container"><Card data={card} /></li>
         ))}
       </ul>
-      {noResults && <h2>Results, if any, will appear here as you type.</h2>}
+      {noResults && <h2 className="search-results">Results, if any, will appear here as you type.</h2>}
       <div className="loading">
         <PacmanLoader
           css={override}

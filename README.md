@@ -1,7 +1,7 @@
 
 ## Vern's attmept at the Highspot Code Challenge
 
-What you'll find here is my attempt at satisfying the reqs for the Highspot Code Assessment.
+What you'll find here is my attempt at satisfying the reqs for the Highspot Code Assessment. Publicly working link at https://highspot-and-vern.web.app/.
 
 
 ## Available Scripts
