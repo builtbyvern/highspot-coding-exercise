@@ -18,22 +18,19 @@ function App() {
    * All three of the follwing functions operate in a similar way, subbing in for react-router
    * in a passable view management set up. Any more complex, and a router would be smart.
    */
-  const handleShowAll = (e) => {
-    e.preventDefault();
+  const handleShowAll = () => {
     setShowAll(true);
     setShowSearch(false);
     setShowWelcome(false);
   }
 
-  const handleShowSearch = (e) => {
-    e.preventDefault();
+  const handleShowSearch = () => {
     setShowAll(false);
     setShowSearch(true);
     setShowWelcome(false);
   }
 
-  const handleShowHome = (e) => {
-    e.preventDefault();
+  const handleShowHome = () => {
     setShowAll(false);
     setShowSearch(false);
     setShowWelcome(true);
@@ -43,11 +40,11 @@ function App() {
     <div>
       <div className="container">
         {showWelcome && 
-          <h1>Welcome to <em>Vern’s Highspot coding exericse</em>. <br /><br />Perhaps you’re looking 
-            to <a href="#" onClick={e => handleShowAll(e)}>browse all the Elder Scrolls: Legends cards</a>. Maybe you’d rather <a href="#" onClick={e => handleShowSearch(e)}>search for a specific card</a>. <br /><br />Either way, happy browsing.
+          <h1>Welcome to <em>my Highspot coding exericse</em>. <br /><br />Perhaps you’re looking 
+            to <span class="almost-a-link" onClick={() => handleShowAll()}>browse all the Elder Scrolls: Legends cards</span>. Maybe you’d rather <span class="almost-a-link" onClick={() => handleShowSearch()}>search for a specific card</span>. <br /><br />Either way, happy browsing.
           </h1>
         }
-        {!showWelcome && <a className="home" href="#" onClick={e => handleShowHome(e)} ><GoHome /> Home</a>}
+        {!showWelcome && <span className="home almost-a-link" onClick={() => handleShowHome()} ><GoHome /> Home</span>}
         {showAll && <CardList />}
         {showSearch && <Search />}
       </div>
